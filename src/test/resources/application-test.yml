@@ -1,0 +1,3 @@
+client:
+  music-survey:
+    base-url: http://localhost:9010

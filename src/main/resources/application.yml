@@ -1,0 +1,16 @@
+server:
+  servlet:
+    context-path: /ingest
+  port: 8090
+
+spring:
+  data:
+    elasticsearch:
+      cluster-name: music_survey
+      cluster-nodes: localhost:9200
+      repositories: enabled=true
+  main:
+    allow-bean-definition-overriding: true
+client:
+  music-survey:
+    base-url: http://localhost:8070/music-survey

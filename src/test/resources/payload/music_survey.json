@@ -1,0 +1,68 @@
+[
+  {
+    "instrument": {
+      "id": 1,
+      "name": "Guitar"
+    },
+    "genre": {
+      "id": 1,
+      "name": "Rock"
+    },
+    "value": 8
+  },
+  {
+    "instrument": {
+      "id": 1,
+      "name": "Guitar"
+    },
+    "genre": {
+      "id": 2,
+      "name": "Hip-Hop"
+    },
+    "value": 2
+  },
+  {
+    "instrument": {
+      "id": 1,
+      "name": "Guitar"
+    },
+    "genre": {
+      "id": 3,
+      "name": "Heavy Metal"
+    },
+    "value": 10
+  },
+  {
+    "instrument": {
+      "id": 1,
+      "name": "Guitar"
+    },
+    "genre": {
+      "id": 4,
+      "name": "Pop"
+    },
+    "value": 1
+  },
+  {
+    "instrument": {
+      "id": 1,
+      "name": "Guitar"
+    },
+    "genre": {
+      "id": 5,
+      "name": "Elektro"
+    },
+    "value": 0
+  },
+  {
+    "instrument": {
+      "id": 1,
+      "name": "Guitar"
+    },
+    "genre": {
+      "id": 6,
+      "name": "Jazz"
+    },
+    "value": 7
+  }
+]
