@@ -14,7 +14,7 @@ public class SurveyIngestElasticsearchContainer extends ElasticsearchContainer {
     public SurveyIngestElasticsearchContainer() {
         super(DockerImageName.parse(ELASTIC_SEARCH_DOCKER)
                 .asCompatibleSubstituteFor("docker.elastic.co/elasticsearch/elasticsearch"));
-        addFixedExposedPort(9200, 9200);
+        addFixedExposedPort(9999, 9999);
         addEnv(DISCOVERY_TYPE, DISCOVERY_TYPE_SINGLE_NODE);
         addEnv(XPACK_SECURITY_ENABLED, Boolean.FALSE.toString());
         addEnv(CLUSTER_NAME, ELASTIC_SEARCH);

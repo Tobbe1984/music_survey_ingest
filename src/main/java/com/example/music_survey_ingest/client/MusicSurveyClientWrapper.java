@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 public class MusicSurveyClientWrapper {
     private final MusicSurveyClient musicSurveyClient;
     private final VotingRepository votingRepository;
-
     private final VotingMapper votingMapper = new VotingMapper();
 
     public void loadAll() {
+        votingRepository.deleteAll();
         votingRepository.saveAll(musicSurveyClient.getAll().stream().map(votingMapper::map).toList());
     }
 }

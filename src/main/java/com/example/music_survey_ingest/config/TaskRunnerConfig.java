@@ -12,6 +12,6 @@ public class TaskRunnerConfig {
 
     @Scheduled(fixedRate=86400)
     private void loadVotingsFromMusicSurvey() {
-        //musicSurveyClientWrapper.loadAll();
+        musicSurveyClientWrapper.loadAll();
     }
 }

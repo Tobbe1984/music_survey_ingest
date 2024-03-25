@@ -87,7 +87,7 @@ public class MusicSurveyIngestIT {
     @Test
     @Order(2)
     void whenValidRequest_shouldReturnAllVotings() throws Exception {
-        this.mockMvc.perform(get("%s?size=10".formatted(INGEST_BASE_URL)))
+        this.mockMvc.perform(get("%s?size=6".formatted(INGEST_BASE_URL)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*]").isNotEmpty())
@@ -99,7 +99,7 @@ public class MusicSurveyIngestIT {
     void whenValidRequestByInstrument_shouldReturnAllVotingsForInstrument() throws Exception {
         var count = this.genreVotingDtos.stream().filter(v -> v.getInstrument().getName().equals(TestDataMockGenerator.INSTRUMENT_NAME)).count();
 
-        this.mockMvc.perform(get("%s/instrument/%s?size=10".formatted(INGEST_BASE_URL, TestDataMockGenerator.INSTRUMENT_NAME)))
+        this.mockMvc.perform(get("%s/instrument/%s?size=6".formatted(INGEST_BASE_URL, TestDataMockGenerator.INSTRUMENT_NAME)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*]").isNotEmpty())
@@ -111,7 +111,7 @@ public class MusicSurveyIngestIT {
     void whenValidRequestByGenre_shouldReturnAllVotingsForGenre() throws Exception {
         var count = this.genreVotingDtos.stream().filter(v -> v.getGenre().getName().equals(TestDataMockGenerator.GENRE_NAME)).count();
 
-        this.mockMvc.perform(get("%s/genre/%s?size=10".formatted(INGEST_BASE_URL, TestDataMockGenerator.GENRE_NAME)))
+        this.mockMvc.perform(get("%s/genre/%s?size=1".formatted(INGEST_BASE_URL, TestDataMockGenerator.GENRE_NAME)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[*]").isNotEmpty())

@@ -1,0 +1,9 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: elasticsearch:9200
+client:
+  music-survey:
+    base-url: http://music-survey-backend:8070/music-survey
+  elasticsearch:
+    host: elasticsearch
