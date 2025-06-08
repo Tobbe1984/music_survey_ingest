@@ -24,6 +24,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 
@@ -43,6 +45,12 @@ public class MusicSurveyIngestPactIT {
     MusicSurveyClientWrapper musicSurveyClientWrapper;
     @Container
     private static final ElasticsearchContainer elasticsearchContainer = new SurveyIngestElasticsearchContainer();
+
+    @DynamicPropertySource
+    static void elasticsearchProperties(DynamicPropertyRegistry registry) {
+        registry.add("client.elasticsearch.host", elasticsearchContainer::getHost);
+        registry.add("client.elasticsearch.port", () -> elasticsearchContainer.getMappedPort(9200));
+    }
 
     private static final String CONSUMER = "music-survey-ingest";
     private static final String PROVIDER = "music-survey";

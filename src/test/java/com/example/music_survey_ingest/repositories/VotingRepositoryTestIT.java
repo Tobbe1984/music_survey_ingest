@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -28,6 +30,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class VotingRepositoryTestIT {
     @Container
     private static final ElasticsearchContainer elasticsearchContainer = new SurveyIngestElasticsearchContainer();
+
+    @DynamicPropertySource
+    static void elasticsearchProperties(DynamicPropertyRegistry registry) {
+        registry.add("client.elasticsearch.host", elasticsearchContainer::getHost);
+        registry.add("client.elasticsearch.port", () -> elasticsearchContainer.getMappedPort(9200));
+    }
 
     @Autowired
     private VotingRepository votingRepository;

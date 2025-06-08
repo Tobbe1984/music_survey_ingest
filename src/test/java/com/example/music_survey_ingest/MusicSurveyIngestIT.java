@@ -15,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
@@ -41,6 +43,12 @@ import static org.springframework.util.StreamUtils.copyToString;
 public class MusicSurveyIngestIT {
     @Container
     private static final ElasticsearchContainer elasticsearchContainer = new SurveyIngestElasticsearchContainer();
+
+    @DynamicPropertySource
+    static void elasticsearchProperties(DynamicPropertyRegistry registry) {
+        registry.add("client.elasticsearch.host", elasticsearchContainer::getHost);
+        registry.add("client.elasticsearch.port", () -> elasticsearchContainer.getMappedPort(9200));
+    }
 
     @Autowired
     private MusicSurveyClientWrapper musicSurveyClientWrapper;
