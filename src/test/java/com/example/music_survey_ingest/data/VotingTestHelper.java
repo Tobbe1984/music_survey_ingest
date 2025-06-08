@@ -5,7 +5,7 @@ import com.example.music_survey_ingest.common.TestDataMockGenerator;
 import lombok.AllArgsConstructor;
 import lombok.With;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @AllArgsConstructor
 @With
