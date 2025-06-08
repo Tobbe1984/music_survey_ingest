@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("pact")
+@ActiveProfiles({"pact", "no-task-runner"})
 @PactTestFor(pactVersion = PactSpecVersion.V4)
 @MockServerConfig(hostInterface = "localhost", port = "9009")
 @PactConsumerTest

@@ -6,7 +6,7 @@ import org.springframework.web.service.annotation.HttpExchange;
 
 import java.util.List;
 
-@HttpExchange(url = "${client.music-survey.base-url}")
+@HttpExchange
 public interface MusicSurveyClient {
     @GetExchange("/api/v1/voting")
     List<GenreVotingDto> getAll();
