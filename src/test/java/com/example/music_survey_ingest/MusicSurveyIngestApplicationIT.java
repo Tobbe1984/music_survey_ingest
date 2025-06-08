@@ -5,14 +5,15 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest
 @Testcontainers
-class MusicSurveyIngestApplicationTests {
+@ActiveProfiles("test")
+class MusicSurveyIngestApplicationIT {
     @Container
     private static final ElasticsearchContainer elasticsearchContainer = new SurveyIngestElasticsearchContainer();
 
