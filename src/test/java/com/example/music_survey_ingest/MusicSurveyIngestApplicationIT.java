@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.example.music_survey_ingest.repositories.VotingRepository;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -22,6 +24,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static java.nio.charset.Charset.defaultCharset;
 import static org.springframework.util.StreamUtils.copyToString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Testcontainers
@@ -36,6 +39,9 @@ class MusicSurveyIngestApplicationIT {
         registry.add("client.elasticsearch.host", elasticsearchContainer::getHost);
         registry.add("client.elasticsearch.port", () -> elasticsearchContainer.getMappedPort(9200));
     }
+
+    @Autowired
+    private VotingRepository votingRepository;
 
     @BeforeAll
     static void setUp() throws IOException {
@@ -54,7 +60,13 @@ class MusicSurveyIngestApplicationIT {
     }
 
     @Test
-    void contextLoads() {
+    void contextLoads() throws InterruptedException {
+        long expectedCount = 6L;
+        int retries = 10;
+        while (retries-- > 0 && votingRepository.count() < expectedCount) {
+            Thread.sleep(500);
+        }
+        assertEquals(expectedCount, votingRepository.count());
     }
 
     @AfterAll
