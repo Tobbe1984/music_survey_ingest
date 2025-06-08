@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Testcontainers
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class VotingRepositoryTest {
+class VotingRepositoryTestIT {
     @Container
     private static final ElasticsearchContainer elasticsearchContainer = new SurveyIngestElasticsearchContainer();
 
