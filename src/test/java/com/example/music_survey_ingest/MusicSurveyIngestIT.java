@@ -12,7 +12,6 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
@@ -38,7 +37,6 @@ import static org.springframework.util.StreamUtils.copyToString;
 @AutoConfigureMockMvc
 @Testcontainers
 @ActiveProfiles("test")
-@EnableFeignClients
 @WireMockTest(httpPort = 9010)
 public class MusicSurveyIngestIT {
     @Container
