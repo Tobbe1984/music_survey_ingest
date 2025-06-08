@@ -5,7 +5,7 @@ import com.example.music_survey_ingest.client.dto.GenreVotingDtoTestHelper;
 import com.example.music_survey_ingest.data.Voting;
 import com.example.music_survey_ingest.data.VotingTestHelper;
 import com.example.music_survey_ingest.repositories.VotingRepository;
-import org.elasticsearch.core.List;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
