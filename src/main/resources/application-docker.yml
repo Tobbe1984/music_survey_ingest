@@ -2,8 +2,14 @@ spring:
   data:
     elasticsearch:
       cluster-nodes: elasticsearch:9200
+  kafka:
+    bootstrap-servers: kafka:9092
 client:
   music-survey:
     base-url: http://music-survey-backend:8070/music-survey
   elasticsearch:
     host: elasticsearch
+app:
+  kafka:
+    topic: music-survey
+    consumer-group: music-survey-group

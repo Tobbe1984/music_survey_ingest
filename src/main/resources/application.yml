@@ -11,9 +11,15 @@ spring:
       repositories: enabled=true
   main:
     allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: localhost:9092
 client:
   music-survey:
     base-url: http://localhost:8070/music-survey
   elasticsearch:
     host: localhost
     port: 9200
+app:
+  kafka:
+    topic: music-survey
+    consumer-group: music-survey-group
